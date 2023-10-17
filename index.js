@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-//const http = require("http");
+const http = require("http");
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/LonexGetAPIRender');
+//mongoose.connect('mongodb://127.0.0.1:27017/LonexGetAPIRender');
 //mongoose.connect("mongodb+srv://Gaurav:eP2ILjAadWqdYhMd@getdata.4pnzco8.mongodb.net/?retryWrites=true&w=majority")
 
 
@@ -25,10 +25,10 @@ app.listen(3000, function () {
 
 
 ////
-/*
+
 
 const PORT = 8000;
-const DB = "mongodb+srv://Gaurav:eP2ILjAadWqdYhMd@lonexgetdata.lnbnuod.mongodb.net/?retryWrites=true&w=majority";
+const DB = "mongodb+srv://Gaurav:jn4h06oawoZwUUJU@lonexcrud.vazjqco.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(DB)
   .then(() => {
@@ -42,4 +42,3 @@ mongoose.connect(DB)
     console.error("Error connecting to MongoDB:", error);
   });
 
-  */
