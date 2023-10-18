@@ -98,7 +98,20 @@ const get_all_data = async (req, res) => {
   try {
 
     const getData = await user.find();
-    res.status(200).send({ success: true, msg: "All Data are-", data: getData })
+
+    const formatData = getData.map(item => ({
+
+      imagePath: path.join(__dirname, '..', 'public/images', item.images),
+      title: item.title,
+      description: item.description,
+      price: item.price,
+      id: item._id
+
+    }));
+
+    res.status(200).json(formatData);
+
+    //    res.status(200).send({ success: true, msg: "All Data are-", data: getData })
 
   } catch (error) {
     res.send(error.message)
@@ -116,14 +129,16 @@ const get_data = async (req, res) => {
     //const id = req.body.id;
     const findData = await user.findOne({ _id: id });
 
+
     if (findData) {
 
-      const imagename = req.params.imagename;
+      const imagename = findData.images;
       const imagePath = path.join(__dirname, '..', 'public/images', imagename);
+
+
       res.status(200).send({ success: true, msg: "Your data is ", data: { findData, imagePath } });
 
-
-      //      res.status(200).send({ success: true, msg: "Your data is ", data: findData });
+      // res.status(200).send({ success: true, msg: "Your data is ", data: findData });
 
     }
     else {

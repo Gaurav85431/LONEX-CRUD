@@ -55,7 +55,7 @@ user_routes.delete('/deleteData/:id', user_controller.delete_data);
 
 // Get Single Data
 
-user_routes.get('/getData/:id/:imagename', user_controller.get_data);
+user_routes.get('/getData/:id', user_controller.get_data);
 
 // Get All Data::
 
