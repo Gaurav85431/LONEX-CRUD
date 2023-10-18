@@ -8,9 +8,9 @@ const insert_data = async (req, res) => {
   try {
 
     const users = new user({
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
+      title: req.params.title,
+      description: req.params.description,
+      price: req.params.price,
       images: req.file.filename
 
     });
@@ -32,15 +32,15 @@ const update_data = async (req, res) => {
   try {
 
 
-    const id = req.body.id;
+    const id = req.params.id;
 
     const ValidID = await user.findOne({ _id: id });
 
     if (ValidID) {
 
-      const newtitle = await req.body.title;
-      const newdescription = req.body.description;
-      const newprice = req.body.price;
+      const newtitle = await req.params.title;
+      const newdescription = req.params.description;
+      const newprice = req.params.price;
       const newimages = req.file.filename;
 
       const userData = await user.findByIdAndUpdate({ _id: id }, {
@@ -69,7 +69,7 @@ const delete_data = async (req, res) => {
 
   try {
 
-    const id = req.body.id;
+    const id = req.params.id;
 
     const ValidID = await user.findOne({ _id: id });
 
@@ -109,7 +109,7 @@ const get_data = async (req, res) => {
 
   try {
 
-    const id = req.body.id;
+    const id = req.params.id;
     const findData = await user.findOne({ _id: id });
 
     if (findData) {
