@@ -51,11 +51,11 @@ user_routes.put('/updateData', upload.single('images'), user_controller.update_d
 
 // Delete API::- DELETE
 
-user_routes.delete('/deleteData', user_controller.delete_data);
+user_routes.delete('/deleteData/:id', user_controller.delete_data);
 
 // Get Single Data
 
-user_routes.get('/getData', user_controller.get_data);
+user_routes.get('/getData/:id', user_controller.get_data);
 
 // Get All Data::
 

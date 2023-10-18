@@ -70,6 +70,7 @@ const delete_data = async (req, res) => {
   try {
 
     const id = req.params.id;
+    //const id = req.body.id;
 
     const ValidID = await user.findOne({ _id: id });
 
@@ -109,7 +110,9 @@ const get_data = async (req, res) => {
 
   try {
 
+
     const id = req.params.id;
+    //const id = req.body.id;
     const findData = await user.findOne({ _id: id });
 
     if (findData) {
