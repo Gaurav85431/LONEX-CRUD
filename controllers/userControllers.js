@@ -1,5 +1,6 @@
 const user = require('../models/userModels');
 const bcyptjs = require('bcryptjs');
+const path = require('path');
 
 // insert data:::
 
@@ -117,7 +118,12 @@ const get_data = async (req, res) => {
 
     if (findData) {
 
-      res.status(200).send({ success: true, msg: "Your data is ", data: findData });
+      const imagename = req.params.imagename;
+      const imagePath = path.join(__dirname, '..', 'public/images', imagename);
+      res.status(200).send({ success: true, msg: "Your data is ", data: { findData, imagePath } });
+
+
+      //      res.status(200).send({ success: true, msg: "Your data is ", data: findData });
 
     }
     else {
@@ -131,6 +137,7 @@ const get_data = async (req, res) => {
   }
 
 }
+
 
 
 module.exports = {
