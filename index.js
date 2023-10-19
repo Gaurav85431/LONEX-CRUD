@@ -4,7 +4,7 @@ const http = require("http");
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-//mongoose.connect('mongodb://127.0.0.1:27017/LonexGetAPIRender');
+// mongoose.connect('mongodb://127.0.0.1:27017/LonexGetAPIRender');
 //mongoose.connect("mongodb+srv://Gaurav:jn4h06oawoZwUUJU@lonexcrud.vazjqco.mongodb.net/?retryWrites=true&w=majority")
 app.use(cors());
 

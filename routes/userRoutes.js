@@ -61,6 +61,15 @@ user_routes.get('/getData/:id', user_controller.get_data);
 
 user_routes.get('/getAllData', user_controller.get_all_data);
 
+// Get Particular image based on imagename
+
+user_routes.get('/getImages/:images', user_controller.get_image);
+
+// Get Particular image by taking id as parameter
+
+user_routes.get('/getMyImages/:id', user_controller.get_image_by_id);
+
+
 
 module.exports = user_routes;
 

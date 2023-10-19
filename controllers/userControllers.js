@@ -153,6 +153,80 @@ const get_data = async (req, res) => {
 
 }
 
+// get image by id 
+
+const get_image_by_id = async (req, res) => {
+
+  try {
+
+    const id = req.params.id;
+    // console.log(id);
+    const checkID = await user.findOne({ _id: id });
+    // console.log(checkID)
+    if (checkID) {
+
+      // find image name of corrosponding id.
+      const imageNm = await checkID.images;
+
+      // getMyImages 1 function hai jisko call krke hm koi image get kr skte hian.
+      const getMyImages = (imageName) => {
+
+        const imagePath = path.join(__dirname, '..', 'public/images', imageName);
+        return imagePath;
+
+      };
+      // jo actual me image name hai (imageNm) usko hm imageName variable me keep
+      const imageName = imageNm;
+      const displayImage = getMyImages(imageName);
+      res.sendFile(displayImage);
+
+    }
+    else {
+      res.send("Invalid ID")
+    }
+
+
+  } catch (error) {
+    res.status(400).send("Invalid ID");
+  }
+
+
+}
+
+
+// GET IMAGE API::::-
+// getData se image ka name aayega .
+// us image ka naam ko url me pas krke image ko get
+// krna hai.
+
+// get image by image name
+const get_image = async (req, res) => {
+
+  try {
+
+    const images = req.params.images;
+    const hasImage = await user.find({ images: images });
+
+    if (hasImage) {
+
+      res.status(200).send({ data: hasImage });
+
+    }
+    else {
+      res.status(400).send("Invalid Image Name");
+
+    }
+
+
+
+
+  } catch (error) {
+    res.send(error.message);
+  }
+
+
+}
+
 
 
 module.exports = {
@@ -160,5 +234,7 @@ module.exports = {
   update_data,
   delete_data,
   get_all_data,
-  get_data
+  get_data,
+  get_image,
+  get_image_by_id
 }
