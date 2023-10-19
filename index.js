@@ -20,7 +20,7 @@ app.get('/getapi', (req, res) => {
 
 });
 
-// server is ready 
+
 
 app.listen(3000, function () {
   console.log("Server is ready");
